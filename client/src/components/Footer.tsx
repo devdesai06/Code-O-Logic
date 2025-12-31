@@ -1,4 +1,3 @@
-import { Cpu } from "lucide-react";
 import { Link } from "react-scroll";
 
 export function Footer() {
@@ -9,11 +8,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-1 md:col-span-2">
-            <div className="flex items-center gap-2 mb-6">
-              <Cpu className="w-8 h-8 text-cyan-400" />
-              <span className="font-display font-bold text-xl tracking-wider text-white">
-                CODE-O-<span className="text-cyan-400">LOGIC</span>
-              </span>
+            <div className="flex items-center gap-3 mb-6">
+              <img src="/logo.png" alt="CODE-O-LOGIC" className="h-10 w-auto" />
             </div>
             <p className="text-gray-500 max-w-sm mb-6">
               Architecting the automated future. We build the systems that build your business.

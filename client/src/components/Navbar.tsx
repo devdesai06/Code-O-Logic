@@ -1,5 +1,4 @@
 import { Link } from "react-scroll";
-import { Cpu } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -21,14 +20,8 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="relative">
-            <div className="absolute inset-0 bg-cyan-500 blur-sm opacity-50 group-hover:opacity-100 transition-opacity" />
-            <Cpu className="w-8 h-8 text-cyan-400 relative z-10" />
-          </div>
-          <span className="font-display font-bold text-xl tracking-wider text-white">
-            CODE-O-<span className="text-cyan-400">LOGIC</span>
-          </span>
+        <div className="flex items-center gap-3 group cursor-pointer">
+          <img src="/logo.png" alt="CODE-O-LOGIC" className="h-10 w-auto" />
         </div>
 
         <div className="hidden md:flex items-center gap-8">
