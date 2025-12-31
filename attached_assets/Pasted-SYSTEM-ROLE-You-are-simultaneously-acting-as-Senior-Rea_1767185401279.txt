@@ -1,0 +1,431 @@
+SYSTEM ROLE
+
+You are simultaneously acting as:
+
+Senior React Frontend Engineer
+
+SaaS UI/UX Designer
+
+Conversion-Focused Copywriter
+
+Technical SEO Specialist
+
+Your output must be deterministic, complete, clean, and production-ready.
+
+No assumptions. No questions. No extra features.
+
+OBJECTIVE
+
+Build a modern, high-conversion, React-only single-page website for CODE-O-LOGIC, a global Automation & AI Systems Agency.
+
+CODE-O-LOGIC helps businesses automate operations, eliminate manual work, and scale intelligently using AI, workflows, and system integrations.
+
+The website must:
+
+Look like a top-tier AI / SaaS brand
+
+Be optimized for a global market (US, EU, Middle East, APAC)
+
+Clearly communicate outcomes, trust, and authority
+
+Drive consultation bookings & qualified leads
+
+TECH STACK (STRICT — DO NOT DEVIATE)
+
+React (Vite or CRA)
+
+Tailwind CSS
+
+JavaScript (ES6+)
+
+Frontend only (no backend)
+
+No chatbot
+
+No pricing logic
+
+No CMS
+
+No unnecessary libraries
+
+Deliver as a Single-Page Application (SPA).
+
+FILE STRUCTURE (MANDATORY)
+/src
+  /components
+    Hero.jsx
+    Trust.jsx
+    Services.jsx
+    Process.jsx
+    UseCases.jsx
+    WhyUs.jsx
+    Testimonials.jsx
+    CTA.jsx
+    Contact.jsx
+    Footer.jsx
+  App.jsx
+  main.jsx
+  index.css
+tailwind.config.js
+package.json
+
+
+Each component must be:
+
+Modular
+
+Reusable
+
+Well-commented
+
+Cleanly styled with Tailwind
+
+BRAND IDENTITY
+Brand Name
+
+CODE-O-LOGIC
+
+Brand Positioning
+
+“Where Logic Meets Automation.”
+
+Market
+
+Global-first automation agency
+
+LOGO & COLOR SYSTEM (CRITICAL)
+Logo Usage
+
+Logo will be provided externally by the user
+
+Use a placeholder <img> with clear comment:
+
+{/* CODE-O-LOGIC Logo – Provided by Client */}
+
+
+Logo must appear in:
+
+Navbar
+
+Footer
+
+Favicon placeholder reference
+
+Color Palette (STRICTLY DERIVED FROM LOGO)
+
+The provided logo uses:
+
+Electric Cyan / Neon Blue
+
+Vibrant Purple / Magenta
+
+Black background
+
+High contrast glow effect
+
+Enforced Color Rules
+
+Background:
+#05060A or #0A0A0F (near-black, NOT gray)
+
+Primary Accent (from logo):
+Neon Cyan / Electric Blue
+
+Secondary Accent (from logo):
+Purple / Magenta gradient
+
+Gradients:
+
+Cyan → Purple
+
+Purple → Blue
+(Used subtly for highlights, borders, CTA glows)
+
+Text:
+
+Primary: White
+
+Secondary: Soft Gray (reduced opacity)
+
+⚠️ Do NOT introduce random colors
+⚠️ No greens, oranges, or reds
+
+All UI must feel cohesive with the logo glow aesthetic.
+
+TYPOGRAPHY
+
+Sans-serif only
+
+Strong hierarchy:
+
+Large, bold hero headline
+
+Clear section titles
+
+High readability
+
+Clean SaaS-style spacing
+
+COPY STYLE RULES
+
+Clear
+
+Outcome-driven
+
+Confident, not hypey
+
+Business-focused
+
+Emphasis on:
+
+Time saved
+
+Costs reduced
+
+Revenue unlocked
+
+Scale without hiring
+
+No buzzword stuffing.
+
+SEO & ACCESSIBILITY (MANDATORY)
+
+Semantic HTML (section, header, main, footer)
+
+Proper heading hierarchy (H1 → H4)
+
+Meta title & description
+
+Alt text placeholders
+
+Mobile-first responsive design
+
+WEBSITE SECTIONS (SOP IMPLEMENTATION)
+1️⃣ HERO (Hero.jsx)
+
+Goal: Instant clarity + conversion
+
+Include:
+
+Headline:
+“Automate the Logic. Scale the Business.”
+
+Subheadline:
+“CODE-O-LOGIC builds AI-powered automation systems that eliminate manual work and unlock scalable growth.”
+
+Primary CTA:
+Book Free Automation Audit
+
+Secondary CTA:
+See How It Works
+
+Dark background with subtle cyan-purple gradient glow
+
+Smooth hover and focus states
+
+2️⃣ TRUST (Trust.jsx)
+
+Goal: Credibility
+
+Include:
+
+Text:
+“Trusted by fast-growing teams worldwide”
+
+Placeholder company logos
+
+Metrics:
+
+Hours saved
+
+Workflows automated
+
+Efficiency gained / ROI improved
+
+3️⃣ SERVICES (Services.jsx)
+
+Goal: Clear value proposition
+
+Service cards:
+
+AI Workflow Automation
+
+Business Process Automation
+
+CRM & Lead Automation
+
+Marketing Automation Systems
+
+No-Code / Low-Code Builds
+
+API & Tool Integrations
+
+Zapier / Make / n8n Automations
+
+AI Assistants (non-chatbot)
+
+Each card includes:
+
+Problem
+
+Solution
+
+Business outcome
+
+4️⃣ PROCESS (Process.jsx)
+
+Goal: Reduce friction & build confidence
+
+4-Step Flow:
+
+Audit & Discovery
+
+System Architecture & Logic Design
+
+Automation Build & Testing
+
+Deployment, Monitoring & Optimization
+
+Horizontal layout on desktop, stacked on mobile.
+
+5️⃣ USE CASES (UseCases.jsx)
+
+Goal: Audience relevance
+
+Segments:
+
+Founders & CEOs
+
+Sales Teams
+
+Marketing Teams
+
+Operations Managers
+
+E-commerce Businesses
+
+Each includes:
+
+Pain point
+
+Automation impact
+
+Result achieved
+
+6️⃣ WHY CODE-O-LOGIC (WhyUs.jsx)
+
+Goal: Differentiation
+
+Bullets:
+
+Logic-first system design
+
+Custom builds (no templates)
+
+ROI-driven automation
+
+Secure & scalable systems
+
+Global delivery mindset
+
+Fast execution
+
+Ongoing optimization support
+
+7️⃣ TESTIMONIALS (Testimonials.jsx)
+
+Goal: Social proof
+
+3–4 testimonial cards
+
+Name, role, company (placeholders)
+
+Quantified results
+
+8️⃣ PRIMARY CTA (CTA.jsx)
+
+Goal: Conversion
+
+Headline:
+“Turn Manual Work Into Automated Logic.”
+
+Subheadline:
+“Built for global teams ready to scale.”
+
+CTAs:
+
+Book Free Consultation
+
+Request Automation Audit
+
+9️⃣ CONTACT (Contact.jsx)
+
+Goal: Lead capture
+
+Include:
+
+Name
+
+Email
+
+Company
+
+Message
+
+Submit button
+
+Calendly embed placeholder
+
+Frontend validation only
+
+🔟 FOOTER (Footer.jsx)
+
+Include:
+
+Logo placeholder
+
+Navigation links
+
+Services list
+
+Privacy & Terms placeholders
+
+Social icon placeholders
+
+Copyright
+
+UI & INTERACTION RULES
+
+Smooth scrolling
+
+Subtle hover animations
+
+Light transitions
+
+No heavy animation libraries
+
+Performance-first design
+
+OUTPUT RULES (NON-NEGOTIABLE)
+
+Replit AI must:
+
+Generate every required file
+
+Include a correct Tailwind config
+
+Ensure the app runs immediately
+
+Comment major sections
+
+Avoid unused imports or dead code
+
+Match the logo-derived color system
+
+FINAL DIRECTIVE
+
+Do not ask questions.
+Do not add extra features.
+Do not change the stack.
+
+Deliver a React-only, SaaS-grade, global Automation Agency website for CODE-O-LOGIC, visually aligned with the provided logo.
