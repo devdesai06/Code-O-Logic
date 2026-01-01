@@ -3,88 +3,100 @@ import { Bot, Layers, Workflow, Database, Code2, Globe } from "lucide-react";
 
 const services = [
   {
-    title: "AI Workflow Automation",
-    description: "End-to-end autonomous agents that handle complex decision-making tasks without human intervention.",
+    title: "AI & Automation Workflows",
+    description:
+      "We use AI and smart automation to handle repetitive work like data entry, follow-ups, and internal processes so your team can focus on real work.",
     icon: Bot,
-    color: "cyan"
   },
   {
-    title: "Business Process Automation",
-    description: "Streamline operations by removing bottlenecks. We digitize and automate manual SOPs.",
+    title: "Operational Process Systems",
+    description:
+      "We turn messy manual processes into simple digital systems — tracking tasks, approvals, reports, and daily operations in one place.",
     icon: Layers,
-    color: "purple"
   },
   {
-    title: "CRM & Lead Systems",
-    description: "Automated lead nurturing, scoring, and routing. Never let a prospect slip through the cracks.",
+    title: "CRM & Lead Management",
+    description:
+      "Web-based systems to capture, track, and manage leads automatically. No missed follow-ups, no spreadsheets, no confusion.",
     icon: Database,
-    color: "blue"
   },
   {
-    title: "Marketing Automation",
-    description: "Personalized content delivery at scale. Dynamic email sequences and ad optimizations.",
+    title: "Marketing & Communication Automation",
+    description:
+      "Automated messages, reminders, and campaigns across WhatsApp, email, and web tools — personalized but hands-free.",
     icon: Globe,
-    color: "green"
   },
   {
-    title: "No-Code / Low-Code Builds",
-    description: "Rapid deployment using best-in-class tools like n8n, Make, and Retool for speed and agility.",
+    title: "Custom Web Dashboards",
+    description:
+      "Simple, clean dashboards that show what’s happening in your business — sales, operations, performance, and daily progress.",
     icon: Workflow,
-    color: "pink"
   },
   {
-    title: "Custom API Integration",
-    description: "Connect disconnected tools. We build custom bridges between your logic islands.",
+    title: "System & Tool Integration",
+    description:
+      "We connect your website, apps, and tools so everything works together smoothly instead of being scattered across platforms.",
     icon: Code2,
-    color: "orange"
-  }
+  },
 ];
 
 export function Services() {
   return (
-    <section id="services" className="py-24 bg-[#05060A] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
-      
+    <section id="services" className="py-20 md:py-24 relative">
+      {/* subtle divider */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          transition={{ duration: 0.35 }}
+          className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-6">
-            SYSTEM <span className="text-cyan-400">MODULES</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-white mb-5">
+            Smart <span className="text-primary">business systems</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-            Our core competencies deployed to upgrade your business infrastructure.
+          <p className="max-w-2xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed">
+            Practical automation and web systems built to simplify operations
+            and help businesses run smoother.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
+        {/* Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              key={service.title}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group relative p-8 bg-card border border-white/5 hover:border-cyan-500/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(6,182,212,0.1)]"
+              transition={{ duration: 0.3 }}
+              className="
+                group relative p-6 sm:p-8 bg-card
+                border border-white/10
+                transition-colors duration-300
+                hover:border-primary/40
+              "
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-white/[0.03] to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-              
-              <div className={`w-12 h-12 rounded bg-white/5 flex items-center justify-center mb-6 group-hover:bg-cyan-500/20 transition-colors`}>
-                <service.icon className={`w-6 h-6 text-${service.color}-400 group-hover:text-cyan-400 transition-colors`} />
+              {/* Icon */}
+              <div className="w-11 h-11 rounded-md bg-white/5 flex items-center justify-center mb-5 group-hover:bg-primary/10 transition-colors">
+                <service.icon className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors" />
               </div>
-              
-              <h3 className="text-xl font-display font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+
+              {/* Title */}
+              <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-primary transition-colors">
                 {service.title}
               </h3>
-              
+
+              {/* Description */}
               <p className="text-gray-400 text-sm leading-relaxed">
                 {service.description}
               </p>
 
-              <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-cyan-500 transition-all duration-300 group-hover:w-full" />
+              {/* Bottom accent (desktop hover only) */}
+              <div className="hidden md:block absolute bottom-0 left-0 h-[2px] w-0 bg-primary transition-all duration-300 group-hover:w-full" />
             </motion.div>
           ))}
         </div>

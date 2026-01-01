@@ -2,65 +2,104 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const benefits = [
-  "Logic-First System Design",
-  "Enterprise-Grade Security",
-  "Custom API Development",
-  "ROI-Driven Architecture",
-  "Global 24/7 Monitoring",
-  "Scalable Cloud Infrastructure"
+  "Built specifically for your business needs",
+  "Easy to use and easy to maintain",
+  "Reduces repetitive manual work",
+  "Reliable systems that work daily",
+  "Direct support from the builders",
+  "Affordable for growing teams",
 ];
 
-export function WhyUs() {
+export default function WhyUs() {
   return (
-    <section id="whyus" className="py-24 bg-[#05060A] relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+    <section id="whyus" className="py-20 md:py-24">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-center">
+          {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
           >
-            <h2 className="text-4xl md:text-5xl font-display font-bold text-white mb-8 leading-tight">
-              WHY UPGRADE TO <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                CODE-O-LOGIC?
-              </span>
+            <span className="text-sm font-medium text-primary mb-3 block">
+              Why choose us
+            </span>
+
+            <h2 className="text-3xl md:text-4xl font-semibold text-white mb-5 leading-snug">
+              Simple systems.
+              <br className="hidden sm:block" />
+              Real business impact.
             </h2>
-            <p className="text-lg text-gray-400 mb-8">
-              We don't just patch software together. We engineer robust, intelligent ecosystems that become the backbone of your operations.
+
+            <p className="text-gray-400 mb-5 leading-relaxed">
+              We’re a small team that builds custom automation and web systems
+              for businesses that want clarity, not complexity.
+            </p>
+
+            <p className="text-gray-400 mb-8 leading-relaxed">
+              No generic software, no unnecessary features — just systems that
+              solve real problems and fit into your daily operations.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {benefits.map((benefit, i) => (
-                <div key={i} className="flex items-center gap-3 p-4 border border-white/5 bg-white/[0.02] rounded-lg">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 shrink-0" />
-                  <span className="text-sm font-medium text-white">{benefit}</span>
+              {benefits.map((benefit) => (
+                <div
+                  key={benefit}
+                  className="flex items-start gap-3 p-4 bg-white/[0.03] border border-white/10 rounded-lg"
+                >
+                  <CheckCircle2 className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                  <span className="text-sm text-gray-300">{benefit}</span>
                 </div>
               ))}
             </div>
           </motion.div>
 
+          {/* RIGHT SIDE PANEL */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.3 }}
             className="relative"
           >
-            {/* Abstract Tech Visual */}
-            <div className="aspect-square rounded-2xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-white/10 p-8 relative overflow-hidden">
-              <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(6,182,212,0.05)_50%,transparent_75%,transparent_100%)] bg-[length:250%_250%] animate-[shimmer_3s_infinite_linear]" />
-              
-              <div className="h-full w-full border border-cyan-500/20 rounded-xl flex items-center justify-center relative z-10">
-                <div className="text-center">
-                  <div className="text-6xl font-display font-bold text-white/10 mb-2">99.9%</div>
-                  <div className="text-cyan-400 font-mono tracking-widest text-sm">UPTIME GUARANTEED</div>
+            <div className="bg-card border border-white/10 rounded-xl p-6 md:p-8">
+              <div className="space-y-6">
+                <div className="border-l-2 border-primary pl-4">
+                  <h3 className="text-lg font-semibold text-white mb-2">
+                    How we’re different
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed">
+                    We don’t push complex enterprise tools. We build what you
+                    actually need, start small, and improve it as you grow.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-white/[0.04] border border-white/10 rounded-lg p-4">
+                    <div className="text-xl font-semibold text-white mb-1">
+                      Direct
+                    </div>
+                    <div className="text-sm text-gray-400">communication</div>
+                  </div>
+
+                  <div className="bg-white/[0.04] border border-white/10 rounded-lg p-4">
+                    <div className="text-xl font-semibold text-white mb-1">
+                      Clear
+                    </div>
+                    <div className="text-sm text-gray-400">pricing & scope</div>
+                  </div>
+                </div>
+
+                <div className="bg-white/[0.02] border border-white/10 rounded-lg p-4">
+                  <p className="text-sm text-gray-400">
+                    You work directly with the people building your system — no
+                    ticket queues, no layers, no confusion.
+                  </p>
                 </div>
               </div>
-
-              {/* Decorative Orbs */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-purple-500/20 blur-3xl rounded-full" />
-              <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-cyan-500/20 blur-3xl rounded-full" />
             </div>
+            
           </motion.div>
         </div>
       </div>

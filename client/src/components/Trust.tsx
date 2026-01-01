@@ -2,50 +2,68 @@ import { motion } from "framer-motion";
 import { Activity, BarChart3, Clock, Zap } from "lucide-react";
 
 const stats = [
-  { label: "Hours Saved", value: "50,000+", icon: Clock, color: "text-cyan-400" },
-  { label: "Workflows Automated", value: "1,200+", icon: Zap, color: "text-purple-400" },
-  { label: "Efficiency Gain", value: "350%", icon: Activity, color: "text-green-400" },
-  { label: "ROI Generated", value: "$5M+", icon: BarChart3, color: "text-blue-400" },
+  { label: "Active pilot teams", value: "12", icon: Activity },
+  { label: "Processes automated", value: "47", icon: Zap },
+  { label: "Time saved per week", value: "18 hrs", icon: Clock },
+  { label: "Average cost reduction", value: "22%", icon: BarChart3 },
 ];
 
 const companies = [
-  "TECHSPACE", "NEXUS CORP", "VANGUARD AI", "OMEGA SYSTEMS", "SYNTHWAVE INC", "FUTURE LOGIC"
+  "Apex Fabrication",
+  "BlueRiver Logistics",
+  "Nova Services Co.",
+  "PrimeTech Works",
 ];
 
 export function Trust() {
   return (
-    <section className="py-20 border-y border-white/5 bg-black/50 backdrop-blur-sm">
+    <section className="py-16 md:py-20 border-y border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Companies */}
         <div className="text-center mb-12">
-          <p className="text-sm font-mono text-gray-500 uppercase tracking-widest mb-6">
-            Trusted by fast-growing logic engines worldwide
+          <p className="text-sm text-gray-500 uppercase tracking-wider mb-6">
+            Working with growing businesses
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            {companies.map((company, i) => (
-              <span key={i} className="text-xl md:text-2xl font-display font-bold text-white/40 hover:text-cyan-400/80 cursor-default transition-colors">
+
+          <div className="flex flex-wrap justify-center gap-6 md:gap-12">
+            {companies.map((company) => (
+              <span
+                key={company}
+                className="text-sm sm:text-base font-medium text-gray-400"
+              >
                 {company}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20">
-          {stats.map((stat, i) => (
+        {/* Stats */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          {stats.map((stat) => (
             <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={stat.label}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="relative group p-6 border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] transition-colors"
+              transition={{ duration: 0.3 }}
+              className="
+                p-5 md:p-6
+                border border-white/10
+                bg-card
+                rounded-lg
+                text-center
+              "
             >
-              <div className={`absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-100 transition-opacity ${stat.color}`}>
-                <stat.icon className="w-8 h-8" />
+              <div className="flex justify-center mb-3">
+                <stat.icon className="w-6 h-6 text-primary" />
               </div>
-              <h3 className={`text-3xl md:text-4xl font-display font-bold mb-2 ${stat.color} drop-shadow-lg`}>
+
+              <div className="text-2xl md:text-3xl font-semibold text-white mb-1">
                 {stat.value}
-              </h3>
-              <p className="text-sm font-mono text-gray-400 uppercase tracking-wider">
+              </div>
+
+              <p className="text-xs md:text-sm text-gray-400">
                 {stat.label}
               </p>
             </motion.div>

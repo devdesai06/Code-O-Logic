@@ -16,12 +16,13 @@ export function CTA() {
           className="text-4xl md:text-6xl font-display font-bold text-white mb-8 leading-tight"
         >
           TURN MANUAL WORK INTO <br />
-          <span className="text-cyan-400 text-glow">AUTOMATED LOGIC</span>.
+          <span className="text-primary
+ text-glow">AUTOMATED LOGIC</span>.
         </motion.h2>
         
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0}}
+          whileInView={{ opacity: 1}}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
         >
