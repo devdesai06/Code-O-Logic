@@ -1,87 +1,95 @@
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight } from "lucide-react";
-import { Link } from "react-scroll";
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-20 md:pt-24">
-      {/* Contrast overlay */}
-      <div className="absolute inset-0 bg-black/50 pointer-events-none" />
+    <section
+      id="hero"
+      className="relative min-h-screen flex items-center pt-28 overflow-hidden"
+    >
+      {/* BRAND BACKGROUND GLOW */}
+      <div className="absolute inset-0 -z-10">
+      
+      </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 text-center">
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+      <div className="max-w-3xl mx-auto px-5 text-center">
+        
+        {/* BRAND TAG */}
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
           className="
-            text-3xl sm:text-4xl md:text-6xl lg:text-7xl
-            font-extrabold text-white
-            mb-5 md:mb-6
-            leading-snug md:leading-tight
+            inline-block mb-6 px-4 py-1.5
+            text-xs font-semibold tracking-widest
+            rounded-full
+            bg-white/5 border border-white/10
+            text-accent
           "
         >
+          SIMPLE SYSTEMS FOR BUSINESSES
+        </motion.span>
+
+        {/* HEADLINE */}
+        <motion.h1
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white leading-tight"
+        >
           We build simple systems
-          <span className="block text-primary">
-            that remove manual work
-          </span>
+          <br />
+          <span className="text-primary">that remove manual work</span>
+          <br />
           from your business.
         </motion.h1>
 
-        {/* Subheadline */}
+        {/* SUBTEXT */}
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.35 }}
-          className="
-            text-gray-300
-            text-base sm:text-lg md:text-xl
-            mb-8 md:mb-10
-            max-w-3xl mx-auto
-            leading-relaxed
-          "
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.1 }}
+          className="mt-6 text-gray-300 text-sm sm:text-base leading-relaxed"
         >
-          Custom automation and web solutions for factories and service businesses —
-          so things run smoothly without constant follow-ups, spreadsheets, or chaos.
+          Custom automation and web solutions for factories and service
+          businesses — so things run smoothly without constant follow-ups,
+          spreadsheets, or chaos.
         </motion.p>
 
-        {/* CTA */}
+        {/* CTA BUTTONS */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.3 }}
-          className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.45, delay: 0.2 }}
+          className="mt-10 flex flex-col gap-4"
         >
           <a
             href="https://wa.me/918401100351"
+            target="_blank"
+            rel="noopener noreferrer"
             className="
-              px-8 py-4
-              bg-primary text-black
-              font-semibold rounded-md
-              transition hover:opacity-90
-              inline-flex items-center justify-center
+              w-full rounded-xl py-4
+              bg-gradient-to-r from-primary to-accent
+              text-black font-semibold
+              shadow-lg shadow-primary/30
+              active:scale-[0.98]
+              transition
             "
           >
-            Talk to us on WhatsApp
-            <ArrowRight className="w-4 h-4 ml-2" />
+            Talk to us on WhatsApp →
           </a>
 
-          <Link
-            to="services"
-            smooth
-            offset={-80}
+          <a
+            href="#services"
             className="
-              px-8 py-4
-              border border-white/30
-              text-white rounded-md
-              hover:text-primary
-              cursor-pointer transition
-              inline-flex items-center justify-center
+              w-full rounded-xl py-4
+              border border-white/15
+              text-white
+              hover:border-accent/60
+              transition
             "
           >
-            See what we build
-            <ChevronRight className="w-4 h-4 ml-1" />
-          </Link>
+            See what we build →
+          </a>
         </motion.div>
       </div>
     </section>

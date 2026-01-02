@@ -5,43 +5,57 @@
 @tailwind utilities;
 
 /* =========================================================
-   ROOT VARIABLES — BRAND IDENTITY
+   ROOT VARIABLES — DARK PURPLE BRAND
    ========================================================= */
 :root {
-  --background: 228 33% 4%;
-  --foreground: 210 20% 98%;
+  /* =========================
+     BASE SURFACES
+     ========================= */
+  --background: 255 40% 4%;        /* Near-black purple */
+  --foreground: 240 20% 97%;
 
-  --card: 228 30% 7%;
-  --card-foreground: 210 20% 98%;
+  --card: 255 35% 7%;
+  --card-foreground: 240 20% 97%;
 
-  /* ✅ BRAND COLOR */
-  --primary: 174 72% 45%;
-  --primary-foreground: 210 20% 98%;
+  /* =========================
+     BRAND COLORS (FROM LOGO)
+     ========================= */
 
-  --secondary: 210 20% 40%;
-  --secondary-foreground: 210 20% 98%;
+  /* Purple from CODE-O-LOGIC text */
+  --primary: 275 85% 62%;
+  --primary-foreground: 240 20% 98%;
 
-  --accent: 174 72% 45%;
-  --accent-foreground: 210 20% 98%;
+  /* Cyan/Teal accent from logo shapes */
+  --accent: 195 90% 55%;
+  --accent-foreground: 240 20% 98%;
 
-  --muted: 228 20% 15%;
-  --muted-foreground: 215 20% 65%;
+  /* Secondary = muted violet */
+  --secondary: 265 30% 45%;
+  --secondary-foreground: 240 20% 98%;
 
-  --border: 228 20% 15%;
-  --ring: 174 72% 45%;
+  /* =========================
+     NEUTRALS
+     ========================= */
+  --muted: 255 25% 13%;
+  --muted-foreground: 240 12% 65%;
+
+  --border: 255 22% 18%;
+  --ring: 195 90% 55%; /* Cyan focus ring */
 
   --radius: 0.75rem;
 
-  /* Fonts */
+  /* =========================
+     FONTS
+     ========================= */
   --font-display: "Manrope", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
-/* =========================================================
-   BASE LAYER — READABILITY & CONSISTENCY
-   ========================================================= */
 
+/* =========================================================
+   BASE LAYER — CLEAN & READABLE
+   ========================================================= */
 @layer base {
   * {
     @apply border-border;
@@ -72,9 +86,9 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.015em;
     font-weight: 600;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.45);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   }
 
   p,
@@ -92,60 +106,100 @@
 
   ::selection {
     background-color: hsl(var(--primary) / 0.35);
-    color: #eafffb;
+    color: #f5efff;
   }
 }
 
 /* =========================================================
-   UTILITIES — SUBTLE, NOT NEON
+   UTILITIES — SOFT PURPLE DEPTH
    ========================================================= */
-
 @layer utilities {
-  /* Controlled text glow (used sparingly) */
+  /* Soft text glow (very controlled) */
   .text-glow {
-    text-shadow: 0 0 6px hsl(var(--primary) / 0.35),
-      0 1px 1px rgba(0, 0, 0, 0.5);
+    text-shadow:
+      0 0 8px hsl(var(--primary) / 0.25),
+      0 1px 1px rgba(0, 0, 0, 0.6);
   }
 
-  /* Panels / cards */
+  /* Glass-style panels */
   .glass-panel {
-    background: rgba(5, 6, 10, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(18, 14, 28, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(10px);
   }
 
   .accent-border {
-    border: 1px solid hsl(var(--primary) / 0.35);
-    box-shadow: 0 0 18px hsl(var(--primary) / 0.18);
+    border: 1px solid hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 22px hsl(var(--primary) / 0.18);
   }
 
   .hover-accent:hover {
-    box-shadow: 0 0 26px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 30px hsl(var(--primary) / 0.35);
   }
 }
 
 /* =========================================================
-   SCROLLBAR — MATCH BRAND
+   SCROLLBAR — PURPLE MATCH
    ========================================================= */
-
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(5, 6, 10, 0.8);
+  background: rgba(16, 12, 26, 0.9);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(60, 80, 90, 0.9);
+  background: rgba(120, 90, 160, 0.7);
   border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary));
 }
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+
+/*
+background
+*/
+@layer utilities {
+  @keyframes floatSlow {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-25px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes floatMedium {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-40px); }
+    100% { transform: translateY(0px); }
+  }
+
+  @keyframes floatFast {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-55px); }
+    100% { transform: translateY(0px); }
+  }
+
+  .float-slow {
+    animation: floatSlow 18s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: floatMedium 14s ease-in-out infinite;
+  }
+
+  .float-fast {
+    animation: floatFast 10s ease-in-out infinite;
   }
 }

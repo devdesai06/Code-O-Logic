@@ -20,7 +20,7 @@ export default function Home() {
   });
 
   return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-primary
+    <div className=" min-h-screen text-foreground selection:bg-primary
 /30 selection:text-cyan-200">
       {/* Scroll Progress Bar */}
       <motion.div
@@ -31,6 +31,7 @@ export default function Home() {
 
       <Navbar />
       <main>
+       
         <Hero />
         <WhoThisIsFor/>
         <Trust />

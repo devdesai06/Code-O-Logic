@@ -11,7 +11,7 @@ const forWho = [
 
 export function WhoThisIsFor() {
   return (
-    <section className="py-20 bg-background relative">
+    <section className="py-20  relative">
       <div className="max-w-4xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
