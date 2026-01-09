@@ -50,9 +50,8 @@ export function Hero() {
           transition={{ duration: 0.45, delay: 0.1 }}
           className="mt-6 text-gray-300 text-sm sm:text-base leading-relaxed"
         >
-          Custom automation and web solutions for factories and service
-          businesses — so things run smoothly without constant follow-ups,
-          spreadsheets, or chaos.
+         We build custom automation for factories and service businesses—eliminating 
+          messy spreadsheets and constant follow-ups.
         </motion.p>
 
         {/* CTA BUTTONS */}

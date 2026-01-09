@@ -5,44 +5,76 @@ import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
 import { Team } from "@/components/Team";
 import WhyUs from "@/components/WhyUs";
-import {WhoThisIsFor} from "@/components/WhoThisIsFor"
+import { WhoThisIsFor } from "@/components/WhoThisIsFor";
 import { CTA } from "@/components/CTA";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { WhatHappensNext } from "@/components/Next";
 import { motion, useScroll, useSpring } from "framer-motion";
-import {WhatHappensNext} from "@/components/Next"
+
 export default function Home() {
   const { scrollYProgress } = useScroll();
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001
+    restDelta: 0.001,
   });
 
   return (
-    <div className=" min-h-screen text-foreground selection:bg-primary
-/30 selection:text-cyan-200">
-      {/* Scroll Progress Bar */}
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-primary
- origin-left z-[100]"
-        style={{ scaleX }}
-      />
+    <div className="min-h-screen text-foreground selection:bg-primary/30 selection:text-cyan-200">
+      {/* Scroll progress bar */}
+  
+      
 
       <Navbar />
+
       <main>
-       
-        <Hero />
-        <WhoThisIsFor/>
+        {/* HOME / HERO */}
+        <section id="home">
+          <Hero />
+        </section>
+
+        {/* WHO THIS IS FOR */}
+        <section id="for-you">
+          <WhoThisIsFor />
+        </section>
+
+        {/* TRUST */}
         <Trust />
-        <Services />
-        <Process />
-        <Team />
-        <WhyUs />
+
+        {/* SERVICES */}
+        <section id="services">
+          <Services />
+        </section>
+
+        {/* PROCESS */}
+        <section id="process">
+          <Process />
+        </section>
+
+        {/* WHY US */}
+        <section id="whyus">
+          <WhyUs />
+        </section>
+
+        {/* CTA */}
         <CTA />
-        <WhatHappensNext/>
-        <Contact />
+
+        {/* WHAT HAPPENS NEXT */}
+        <WhatHappensNext />
+
+        {/* CONTACT */}
+        <section id="contact">
+          <Contact />
+        </section>
+
+        {/* TEAM */}
+        <section id="team">
+          <Team />
+        </section>
       </main>
+
       <Footer />
     </div>
   );
