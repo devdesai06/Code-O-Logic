@@ -42,10 +42,10 @@ export function Background({ particleCount }: BackgroundProps) {
         this.baseX = this.x;
         this.baseY = this.y;
         // INCREASED SIZE: Larger, more visible nodes
-        this.size = Math.random() * 1.5 + 1.5; 
-        this.density = Math.random() * 25 + 1;
+        this.size = Math.random() * 1.8 + 1.5; 
+        this.density = Math.random() * 30 + 1;
         // SLIGHTLY LOWER OPACITY: To balance the larger size/count
-        this.opacity = Math.random() * 0.4 + 0.1;
+        this.opacity = Math.random() * 0.7 + 0.1;
       }
 
       draw(context: CanvasRenderingContext2D) {
