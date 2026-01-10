@@ -6,7 +6,7 @@ import { Process } from "@/components/Process";
 import { Team } from "@/components/Team";
 import WhyUs from "@/components/WhyUs";
 import { WhoThisIsFor } from "@/components/WhoThisIsFor";
-import { CTA } from "@/components/CTA";
+// import { CTA } from "@/components/CTA";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { WhatHappensNext } from "@/components/Next";
@@ -58,8 +58,7 @@ export default function Home() {
           <WhyUs />
         </section>
 
-        {/* CTA */}
-        <CTA />
+      
 
         {/* WHAT HAPPENS NEXT */}
         <WhatHappensNext />

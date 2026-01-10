@@ -19,7 +19,7 @@ const TEAM = [
     bio: "Handles digital marketing and advertising strategies, focusing on brand visibility, lead generation, and customer engagement.",
   },
   {
-    name: "Kunj Shukla",
+    name: "Kantom Luke",
     role: "AI Engineer & Team Lead",
     bio: "Leads the technical team and builds AI-driven solutions that automate workflows and enhance business efficiency.",
   },
