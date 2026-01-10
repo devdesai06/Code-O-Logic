@@ -6,7 +6,7 @@ import GooeyNav from "./NavAnim";
 const NAV_ITEMS = [
   { label: "Home", href: "home" },
   { label: "Who It’s For", href: "for-you" },
-  { label: "Process", href: "process" },
+  { label: "Process", href: "howweWork" },
   { label: "Services", href: "services" },
   { label: "Why Us", href: "whyus" },
   { label: "Contact", href: "contact" },
