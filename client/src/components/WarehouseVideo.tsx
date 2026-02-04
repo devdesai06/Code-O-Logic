@@ -38,23 +38,22 @@ const MESSAGES = [
 export const WarehouseVideo: React.FC = () => {
   const frame = useCurrentFrame();
 
-  // Calculate scrolling effect: as new messages appear, the container moves up
- const scrollY = interpolate(
-  frame,
-  [200, 400, 600, 800], // Increased frames to match later messages
-  [0, -300, -600, -1000], // Increased negative offset to push old messages higher
-  { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-);
+  const scrollY = interpolate(
+    frame,
+    [100, 300, 500, 700, 900], // The "Time" steps
+    [0, -400, -850, -1400, -2000], // The "Movement" steps (Pushing further up)
+    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+  );
   return (
     <AbsoluteFill className="bg-[#0b141a] font-sans">
       {/* 1. WHATSAPP HEADER */}
       <div className="absolute top-0 w-full bg-[#1f2c33] p-10 pt-24 flex items-center justify-between z-30 shadow-xl">
         <div className="flex items-center gap-5">
-          <ChevronLeft size={45} className="text-[#00a884]" />
-          <div className="w-16 h-16 rounded-full bg-[#607d8b] flex items-center justify-center text-3xl font-bold text-white shadow-lg">V</div>
+          <ChevronLeft size={48} className="text-[#00a884]" />
+          <div className="w-16 h-16 rounded-full bg-[#607d8b] flex items-center justify-center text-4xl font-bold text-white shadow-lg">C</div>
           <div>
-            <h2 className="text-3xl font-bold text-[#e9edef]"> Code O Logic's Whatsapp Chatbot</h2>
-            <p className="text-xl text-[#00a884] font-medium">online</p>
+            <h2 className="text-5xl font-bold text-[#e9edef]">  Whatsapp Chatbot</h2>
+            <p className="text-4xl text-[#00a884] font-medium">online</p>
           </div>
         </div>
         <div className="flex gap-10 text-[#aebac1] mr-4">

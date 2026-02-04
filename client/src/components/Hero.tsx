@@ -124,7 +124,7 @@ export function Hero() {
             <div className="h-full w-full">
               <Player
                 component={WarehouseVideo}
-                durationInFrames={650}
+                durationInFrames={900}
                 compositionWidth={1080}
                 compositionHeight={1920}
                 fps={30}
