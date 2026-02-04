@@ -13,7 +13,7 @@ interface TeamMember {
     bio: "Spearheads the company’s vision and long-term growth, overseeing digital marketing strategies and advertising initiatives to drive brand visibility and customer engagement.",
   },
   {
-    name: "Kunj Shukla", 
+    name: "Kantom Luke", 
     role: "Founder & CTO",
     bio: "Leads the technical architecture and innovation roadmap, specializing in the development of high-level AI-driven systems and web infrastructure.",
   },
