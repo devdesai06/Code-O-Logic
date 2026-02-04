@@ -39,13 +39,12 @@ export const WarehouseVideo: React.FC = () => {
   const frame = useCurrentFrame();
 
   // Calculate scrolling effect: as new messages appear, the container moves up
-  const scrollY = interpolate(
-    frame,
-    [200, 300, 450, 550],
-    [0, -150, -350, -550],
-    { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
-  );
-
+ const scrollY = interpolate(
+  frame,
+  [200, 400, 600, 800], // Increased frames to match later messages
+  [0, -300, -600, -1000], // Increased negative offset to push old messages higher
+  { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' }
+);
   return (
     <AbsoluteFill className="bg-[#0b141a] font-sans">
       {/* 1. WHATSAPP HEADER */}
