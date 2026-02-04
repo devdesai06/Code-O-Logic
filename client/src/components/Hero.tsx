@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { Check, ArrowRight, Zap, Layers, MousePointer2 } from "lucide-react";
 
-// --- 1. THE DECRYPT ANIMATION COMPONENT ---
+// --- 1. THE DECRYPT ANIMATION COMPONENT (Preserved & Optimized) ---
 const chars = "-_~`!@#$%^&*()+=[]{}|;:,.<>?/";
 
 interface DecryptTextProps {
@@ -22,9 +23,7 @@ const DecryptText = ({ text, className = "" }: DecryptTextProps) => {
         prev
           .split("")
           .map((letter, index) => {
-            if (index < iteration) {
-              return text[index];
-            }
+            if (index < iteration) return text[index];
             return chars[Math.floor(Math.random() * chars.length)];
           })
           .join("")
@@ -33,126 +32,88 @@ const DecryptText = ({ text, className = "" }: DecryptTextProps) => {
       if (iteration >= text.length) {
         if (intervalRef.current) clearInterval(intervalRef.current);
       }
-
       iteration += 1 / 3;
     }, 30);
   };
 
   useEffect(() => {
     animate();
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-    };
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
   }, []);
 
   return (
-    <span
-      className={className}
-      onMouseEnter={animate} // Re-trigger on hover for effect
-    >
+    <span className={className} onMouseEnter={animate}>
       {displayText}
     </span>
   );
 };
 
-// --- 2. THE HERO SECTION ---
-export function Hero() {
+// --- 2. THE HERO SECTION (SaaS Upgrade) ---
+export   function Hero() {
   return (
-    <section
-      id="hero"
-      // Added justify-center for perfect centering
-      // No bg-color class used here, so it remains transparent
-      className="relative min-h-screen flex items-center justify-center pt-28 overflow-hidden"
-    >
-      {/* BRAND BACKGROUND GLOW (Preserved Wrapper) */}
-      <div className="absolute inset-0 -z-10 pointer-events-none">
-        {/* Your glow/grid background component goes here if needed */}
+    <section className="relative min-h-screen flex flex-col items-center justify-center pt-20 overflow-hidden bg-transparent">
+      {/* Visual Depth: Abstract Background Glows */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-[10%] left-[-10%] w-[30%] h-[30%] rounded-full bg-blue-500/10 blur-[120px]" />
+        <div className="absolute bottom-[10%] right-[-10%] w-[30%] h-[30%] rounded-full bg-purple-500/10 blur-[120px]" />
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 text-center">
-        
-        {/* BRAND TAG */}
-        <motion.div
+      <div className="max-w-5xl mx-auto px-6 text-center">
+        {/* Shimmering Badge */}
+        <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex justify-center mb-8"
+          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md"
         >
-          <span className="
-            px-4 py-2
-            text-xs font-bold tracking-[0.2em] uppercase
-            rounded-full
-            bg-white/5 border border-white/10
-            text-accent shadow-[0_0_15px_rgba(255,255,255,0.05)]
-            backdrop-blur-sm
-          ">
-            Simple Systems for Businesses
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-gray-400">
+            Automating Operations 2026
           </span>
         </motion.div>
 
-        {/* HEADLINE */}
-        <motion.h1
+        {/* Dynamic Headline */}
+        <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.15] tracking-tight"
+          transition={{ delay: 0.1 }}
+          className="text-5xl md:text-7xl font-bold text-white tracking-tighter leading-[1.05]"
         >
-          Stop drowning in <br className="hidden sm:block" />
-          manual work. Build
-          <br />
-          {/* DECRYPTED TEXT ANIMATION APPLIED HERE */}
-          <span className="text-primary block mt-2">
-            <DecryptText text="Simple Systems." />
+          Stop drowning in <br />
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">
+            manual work.
           </span>
         </motion.h1>
 
-        {/* SUBTEXT */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-8 max-w-xl mx-auto text-gray-400 text-base sm:text-lg leading-relaxed"
+        {/* The Decrypt Accent */}
+        <div className="mt-6 font-mono text-emerald-400 text-lg md:text-xl tracking-tight">
+          <DecryptText text="// Build Simple Systems." />
+        </div>
+
+        <motion.p 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="mt-8 max-w-2xl mx-auto text-gray-400 text-lg leading-relaxed"
         >
           We replace messy spreadsheets and constant follow-ups with 
           custom automation tailored for factories and service businesses.
         </motion.p>
 
-        {/* CTA BUTTONS */}
-        <motion.div
+        {/* CTA Group */}
+        <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
+          transition={{ delay: 0.4 }}
+          className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-6"
         >
           <a
             href="https://wa.me/918401100351"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              w-full sm:w-auto px-8 py-4 rounded-xl
-              bg-gradient-to-r from-primary to-accent
-              text-black font-bold text-lg
-              shadow-lg shadow-primary/25
-              hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98]
-              transition-all duration-300
-            "
+            className="group relative px-8 py-4 bg-white text-black font-bold rounded-2xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.2)] flex items-center gap-2"
           >
-            Talk to us on WhatsApp &rarr;
+            Get a Free Audit <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
           </a>
-
-          <a
-            href="#services"
-            className="
-              w-full sm:w-auto px-8 py-4 rounded-xl
-              border border-white/10
-              bg-white/5
-              text-white font-medium
-              hover:bg-white/10 hover:border-white/20
-              transition-all duration-300
-              backdrop-blur-sm
-            "
-          >
-            See what we build
+          <a href="#services" className="text-gray-400 hover:text-white transition-colors font-medium border-b border-transparent hover:border-white/20 pb-1">
+            See our process
           </a>
         </motion.div>
       </div>

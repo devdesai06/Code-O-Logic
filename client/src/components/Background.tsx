@@ -9,149 +9,121 @@ export function Background({ particleCount }: BackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    const currentCanvas = canvasRef.current;
+    if (!currentCanvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = currentCanvas.getContext("2d");
     if (!ctx) return;
 
     let animationFrameId: number;
-    let particles: Particle[] = [];
-    const mouse = { x: -1000, y: -1000, radius: 150 };
+    let particles: AshParticle[] = [];
 
     const resize = () => {
-      if (canvas) {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+      if (canvasRef.current) {
+        canvasRef.current.width = window.innerWidth;
+        canvasRef.current.height = window.innerHeight;
         init();
       }
     };
 
-    class Particle {
+    class AshParticle {
       x: number;
       y: number;
-      baseX: number;
-      baseY: number;
       size: number;
-      density: number;
       opacity: number;
+      speedX: number;
+      speedY: number;
+      wobble: number;
+      wobbleSpeed: number;
 
-      constructor(cvs: HTMLCanvasElement) {
-        this.x = Math.random() * cvs.width;
-        this.y = Math.random() * cvs.height;
-        this.baseX = this.x;
-        this.baseY = this.y;
-        // INCREASED SIZE: Larger, more visible nodes
-        this.size = Math.random() * 1.8 + 1.5; 
-        this.density = Math.random() * 30 + 1;
-        // SLIGHTLY LOWER OPACITY: To balance the larger size/count
-        this.opacity = Math.random() * 0.7 + 0.1;
+      constructor(width: number, height: number) {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        // Ash is irregular: some tiny, some larger flakes
+        this.size = Math.random() * 2.5 + 0.5;
+        this.opacity = Math.random() * 0.4 + 0.1;
+        // Slow drifting movement
+        this.speedX = (Math.random() - 0.5) * 0.7;
+        this.speedY = Math.random() * 0.4 + 0.6;
+        this.wobble = Math.random() * Math.PI;
+        this.wobbleSpeed = Math.random() * 0.2;
       }
 
-      draw(context: CanvasRenderingContext2D) {
-        context.fillStyle = `rgba(148, 163, 184, ${this.opacity})`; 
-        context.beginPath();
-        context.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        context.closePath();
-        context.fill();
+      update(width: number, height: number) {
+        this.x += this.speedX + Math.sin(this.wobble) * 0.8;
+        this.y -= this.speedY; // Floating upwards like embers
+        this.wobble += this.wobbleSpeed;
+
+        // Wrap around logic
+        if (this.y < -10) this.y = height + 10;
+        if (this.x > width + 10) this.x = -10;
+        if (this.x < -10) this.x = width + 10;
       }
 
-      update() {
-        let dx = mouse.x - this.x;
-        let dy = mouse.y - this.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
+      draw(context: CanvasRenderingContext2D, scrollOffset: number, cHeight: number) {
+        // Subtle Parallax: Ash moves slightly when you scroll
+        const parallaxY = (this.y + (scrollOffset * 0.15)) % cHeight;
         
-        if (distance < mouse.radius) {
-          let forceDirectionX = dx / distance;
-          let forceDirectionY = dy / distance;
-          let maxDistance = mouse.radius;
-          let force = (maxDistance - distance) / maxDistance;
-          let directionX = forceDirectionX * force * this.density;
-          let directionY = forceDirectionY * force * this.density;
-          
-          this.x -= directionX;
-          this.y -= directionY;
-        } else {
-          if (this.x !== this.baseX) {
-            let dxReturn = this.x - this.baseX;
-            this.x -= dxReturn / 20;
-          }
-          if (this.y !== this.baseY) {
-            let dyReturn = this.y - this.baseY;
-            this.y -= dyReturn / 20;
-          }
-        }
+        context.fillStyle = `rgba(200, 200, 220, ${this.opacity})`;
+        context.shadowBlur = 4;
+        context.shadowColor = "rgba(255, 255, 255, 0.1)";
+        
+        context.beginPath();
+        // Slightly irregular shapes instead of perfect circles
+        context.ellipse(this.x, parallaxY, this.size, this.size * 0.8, this.wobble, 0, Math.PI * 2);
+        context.fill();
       }
     }
 
-    const drawLines = (context: CanvasRenderingContext2D) => {
-      for (let a = 0; a < particles.length; a++) {
-        for (let b = a; b < particles.length; b++) {
-          let dx = particles[a].x - particles[b].x;
-          let dy = particles[a].y - particles[b].y;
-          let distance = Math.sqrt(dx * dx + dy * dy);
-
-          // Slightly increased line distance to accommodate more particles
-          if (distance < 110) {
-            const opacity = 1 - distance / 110;
-            context.strokeStyle = `rgba(148, 163, 184, ${opacity * 0.12})`;
-            context.lineWidth = 0.8;
-            context.beginPath();
-            context.moveTo(particles[a].x, particles[a].y);
-            context.lineTo(particles[b].x, particles[b].y);
-            context.stroke();
-          }
-        }
-      }
-    };
-
     const init = () => {
+      if (!canvasRef.current) return;
       particles = [];
-      // INCREASED NUMBERS: More dense for a more "active" feel
-      const finalCount = particleCount || (window.innerWidth < 768 ? 80 : 180);
+      const { width, height } = canvasRef.current;
+      const finalCount = particleCount || (window.innerWidth < 768 ? 40 : 100);
       
       for (let i = 0; i < finalCount; i++) {
-        particles.push(new Particle(canvas));
+        particles.push(new AshParticle(width, height));
       }
     };
 
     const animate = () => {
-      if (!ctx || !canvas) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
-      drawLines(ctx);
+      const canvas = canvasRef.current;
+      const context = canvas?.getContext("2d");
+      if (!canvas || !context) return;
+
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      const scrollY = window.scrollY;
 
       for (let i = 0; i < particles.length; i++) {
-        particles[i].draw(ctx);
-        particles[i].update();
+        particles[i].update(canvas.width, canvas.height);
+        particles[i].draw(context, scrollY, canvas.height);
       }
+      
       animationFrameId = requestAnimationFrame(animate);
     };
 
     window.addEventListener("resize", resize);
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-
     resize();
     animate();
 
     return () => {
       window.removeEventListener("resize", resize);
-      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, [particleCount]);
 
   return (
-    <div className="fixed inset-0 -z-10 bg-[#020617]">
-      {/* Background radial glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(30,41,59,0.5),transparent)]" />
+    <div className="fixed inset-0 -z-10 bg-[#050505] overflow-hidden">
+      {/* The "Upside Down" Glows */}
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_-20%,_#1e1b4b_0%,_transparent_50%)] opacity-60" />
+      <div className="absolute bottom-0 left-0 w-full h-full bg-[radial-gradient(circle_at_80%_120%,_#450a0a_0%,_transparent_40%)] opacity-40" />
+      
+      {/* Heavy Vignette for that claustrophobic horror feel */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#000000_95%)]" />
+
       <canvas
         ref={canvasRef}
-        className="block w-full h-full opacity-70"
+        className="block w-full h-full filter blur-[0.5px]"
       />
     </div>
   );

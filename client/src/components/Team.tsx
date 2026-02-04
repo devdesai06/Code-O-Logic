@@ -6,27 +6,26 @@ interface TeamMember {
   name: string;
   role: string;
   bio: string;
-}
-const TEAM = [
-  {
-    name: "Dhairya Vyas",
-    role: "Marketing & Client Acquisition",
-    bio: "Leads marketing initiatives and client outreach, helping businesses understand how automation and web systems can improve their daily operations.",
-  },
+}const TEAM = [
   {
     name: "Ishan Pandya",
-    role: "Marketing & Advertising",
-    bio: "Handles digital marketing and advertising strategies, focusing on brand visibility, lead generation, and customer engagement.",
+    role: "Founder & CEO",
+    bio: "Spearheads the company’s vision and long-term growth, overseeing digital marketing strategies and advertising initiatives to drive brand visibility and customer engagement.",
   },
   {
-    name: "Kantom Luke",
-    role: "AI Engineer & Team Lead",
-    bio: "Leads the technical team and builds AI-driven solutions that automate workflows and enhance business efficiency.",
+    name: "Kunj Shukla", 
+    role: "Founder & CTO",
+    bio: "Leads the technical architecture and innovation roadmap, specializing in the development of high-level AI-driven systems and web infrastructure.",
+  },
+  {
+    name: "Dhairya Vyas",
+    role: "Co-Founder & MD",
+    bio: "Managing Director overseeing marketing operations and client acquisition, bridging the gap between complex automation solutions and daily business needs.",
   },
   {
     name: "Dev Desai",
-    role: "AI Automation & Dashboards",
-    bio: "Develops AI-powered automations and business dashboards that provide clear insights and reduce manual operational work.",
+    role: "Co-Founder & COO",
+    bio: "Directs company operations and internal workflows, focusing on AI-powered automations and data dashboards that maximize organizational efficiency.",
   },
 ];
 
