@@ -54,7 +54,7 @@ export const WarehouseVideo: React.FC = () => {
           <ChevronLeft size={45} className="text-[#00a884]" />
           <div className="w-16 h-16 rounded-full bg-[#607d8b] flex items-center justify-center text-3xl font-bold text-white shadow-lg">V</div>
           <div>
-            <h2 className="text-3xl font-bold text-[#e9edef]">Vikas (Sales)</h2>
+            <h2 className="text-3xl font-bold text-[#e9edef]"> Code O Logic's Whatsapp Chatbot</h2>
             <p className="text-xl text-[#00a884] font-medium">online</p>
           </div>
         </div>
